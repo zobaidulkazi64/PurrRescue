@@ -20,3 +20,6 @@ jobs:
       - name: devlopment build
         run: yarn build
         working-directory: "../../packages/services/user/package.json"
+
+      - name: success build
+        run: exit 0
