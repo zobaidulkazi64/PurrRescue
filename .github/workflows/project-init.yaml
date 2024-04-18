@@ -1,0 +1,13 @@
+name: Project Init
+
+on: [push]
+
+jobs:
+  project-init:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Project Init ok
+        run: echo "ok, project init successful"
