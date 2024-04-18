@@ -1,6 +1,6 @@
 name: Project Init
 
-on: [push]
+on: workflow_dispatch
 
 jobs:
   project-init:
