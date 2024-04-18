@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express";
-import { UserCreateSchema } from "@/schemas";
-import prisma from "@/prisma";
+import { UserCreateSchema } from "@/utils/schemas";
+import prisma from "@/utils/prisma";
 
 const createUser = async (req: Request, res: Response, next: NextFunction) => {
   try {
@@ -10,20 +10,26 @@ const createUser = async (req: Request, res: Response, next: NextFunction) => {
       return res.status(400).json({ message: parsedBody.error.errors });
     }
 
-    // check if the authUserId already exists
+    // check if user already exists
     const existingUser = await prisma.user.findUnique({
-      where: { authUserId: parsedBody.data.authUserId },
+      where: {
+        authUserId: parsedBody.data.authUserId,
+      },
     });
+
     if (existingUser) {
       return res.status(400).json({ message: "User already exists" });
     }
 
-    // Create a new user
-    const user = await prisma.user.create({
+    // create user
+    const createdUser = await prisma.user.create({
       data: parsedBody.data,
     });
 
-    return res.status(201).json(user);
+    res.status(201).json(createdUser);
+    return res.status(201).json({
+      message: "User created successfully",
+    });
   } catch (error) {
     next(error);
   }
