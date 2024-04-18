@@ -16,6 +16,7 @@ jobs:
 
       - name: Install dependencies
         run: yarn install --frozen-lockfile
-        working-directory: packages/services/user
-      - name: devlopment server
-        run: yarn dev
+        working-directory: "../../packages/services/user/package.json"
+      - name: devlopment build
+        run: yarn build
+        working-directory: "../../packages/services/user/package.json"
