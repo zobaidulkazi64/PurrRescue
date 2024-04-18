@@ -14,13 +14,20 @@ datasource db {
 }
 
 model User {
-  id         String   @id @default(cuid())
-  authUserId String   @unique
-  name       String
-  email      String
-  password   String
-  createdAt  DateTime @default(now())
-  updatedAt  DateTime @updatedAt
+  id          String   @id @default(cuid())
+  authUserId  String   @unique
+  name        String
+  email       String
+  phoneNumber String?
+  address     String   @default("Gazipur, Dhaka")
+  city        String   @default("Dhaka")
+  state       String   @default("Dhaka")
+  country     String   @default("Bangladesh")
+  postalCode  String   @default("1000")
+  isActive    Boolean  @default(true)
+  isDeleted   Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 
   @@index([authUserId])
 }
