@@ -12,7 +12,6 @@ export const UserCreateSchema = z.object({
   postalCode: z.string().default("1000"),
   isActive: z.boolean().default(true),
   isDeleted: z.boolean().default(false),
-  
 });
 
 export const UserUpdateSchema = UserCreateSchema.omit({
