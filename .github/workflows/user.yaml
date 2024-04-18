@@ -1,6 +1,9 @@
 name: User Workflow
 
-on: [push, pull_request]
+on:
+  push:
+    branches:
+      - main
 
 jobs:
   user-build:
