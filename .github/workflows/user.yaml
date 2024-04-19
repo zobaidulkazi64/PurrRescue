@@ -15,6 +15,9 @@ jobs:
       - name: Navigate to  User directory
         run: cd packages/services/user
 
+      - name: user directory ls
+        run: ls .
+
       - name: ls - a
         run: ls -a
 
