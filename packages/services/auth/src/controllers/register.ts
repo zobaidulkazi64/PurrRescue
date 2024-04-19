@@ -3,7 +3,7 @@ import prisma from "@/utils/prisma";
 import { registerSchema } from "../utils/schemas";
 import bcrypt from "bcryptjs";
 
-const UserRegistration = async (
+const UserRegister = async (
   req: Request,
   res: Response,
   next: NextFunction
@@ -62,4 +62,4 @@ const UserRegistration = async (
   }
 };
 
-export default UserRegistration;
+export default UserRegister;
