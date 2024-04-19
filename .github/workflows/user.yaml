@@ -11,18 +11,21 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - name: Setup Node
-        uses: actions/setup-node@v4
+
+      - name: Navigate to  User directory
+        run: cd packages/services/user
+
+      - name: Setup Node v20
+        uses: actions/setup-node@v3
         with:
-          node-version: "20"
+          node-version: 20
           cache: "yarn"
 
       - name: Install dependencies
-        run: yarn install --frozen-lockfile
-        working-directory: "../../packages/services/user/package.json"
-      - name: devlopment build
-        run: yarn build
-        working-directory: "../../packages/services/user/package.json"
+        run: yarn --frozen-lockfile
 
-      - name: success build
-        run: exit 0
+      - name: Build
+        run: yarn build
+
+      - name: Success Build
+        run: echo "Success Build"
