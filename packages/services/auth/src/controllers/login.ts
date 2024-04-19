@@ -82,7 +82,7 @@ const UserLogin = async (req: Request, res: Response, next: NextFunction) => {
       attempt: "SUCCESS",
     });
 
-    return res.status(200).json({
+    return res.status(200).header("Authorization", accessToken).json({
       success: true,
       data: {
         accessToken,
