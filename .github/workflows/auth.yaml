@@ -1,4 +1,4 @@
-name: User Workflow - Build
+name: Auth Workflow - Build
 
 on:
   push:
@@ -6,14 +6,14 @@ on:
       - main
 
 jobs:
-  user-build:
+  auth-build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout User
+      - name: Checkout Auth
         uses: actions/checkout@v3
 
-      - name: Navigate to  User directory
-        run: cd packages/services/user
+      - name: Navigate to  Auth directory
+        run: cd packages/services/auth
         shell: bash
 
       - name: Setup Node v20

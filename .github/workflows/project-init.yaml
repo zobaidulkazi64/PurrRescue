@@ -1,8 +1,9 @@
 name: Project Init
 
 on:
-  release:
-    types: [published]
+  push:
+    branches:
+      - main
 
 jobs:
   project-init:
