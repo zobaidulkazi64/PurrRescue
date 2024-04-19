@@ -24,6 +24,9 @@ jobs:
       - name: Install dependencies
         run: yarn --frozen-lockfile
 
+      - name: Inatall tsc-alias
+        run: yarn add tsc-alias --dev
+
       - name: Build
         run: yarn build
 
