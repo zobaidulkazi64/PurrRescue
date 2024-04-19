@@ -1,11 +1,10 @@
 {
-  "name": "petListing",
+  "name": "pet_listing",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
     "dev": "ts-node-dev -r tsconfig-paths/register ./src/index.ts",
-    "build": "tsc && tsc-alias",
     "migrate:dev": "prisma migrate dev",
     "migrate:prod": "prisma migrate deploy"
   },

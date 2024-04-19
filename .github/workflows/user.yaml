@@ -16,25 +16,20 @@ jobs:
         run: cd packages/services/user & ls .
 
       - name: Navigate to  User directory & ls all files
-        run: cd packages/services/user & ls .
+        run: cd packages/services/user
+        shell: bash
 
-      - name: ls - a
-        run: ls -a
+      - name: Setup Node v20
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+          cache: "yarn"
 
-      - name: message
-        run: echo "Hello World"
+      - name: Install dependencies
+        run: yarn --frozen-lockfile
 
-      # - name: Setup Node v20
-      #   uses: actions/setup-node@v3
-      #   with:
-      #     node-version: 20
-      #     cache: "yarn"
+      - name: Build
+        run: yarn build
 
-      # - name: Install dependencies
-      #   run: yarn --frozen-lockfile
-
-      # - name: Build
-      #   run: yarn build
-
-      # - name: Success Build
-      #   run: echo "Success Build"
+      - name: Success Build
+        run: echo "Success Build"
