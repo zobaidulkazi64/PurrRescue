@@ -13,57 +13,49 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-// create pet schema 
-// enum petGender {
-//   MALE
-//   FEMALE
-// }
+// schema.prisma
 
-// enum petCategory {
-//   DOG
-//   CAT
-//   BIRD
-// }
+// Enums
+enum PetGender {
+  MALE
+  FEMALE
+}
 
-// enum petSize {
-//   SMALL
-//   MEDIUM
-//   LARGE
-//   EX_LARGE
-// }
+enum PetCategory {
+  DOG
+  CAT
+  BIRD
+}
 
-// enum petColor {
-//   WHITH
-//   BLACK
-//   BROWN
-//   GRAY
-// }
+enum PetSize {
+  SMALL
+  MEDIUM
+  LARGE
+  EX_LARGE
+}
 
-// enum petBreed {
-//   LABRADOR
-//   POODLE
-//   BEAGLE
-//   GERMAN_SHEPHERD
-//   GOLDEN_RETRIEVER
-//   DACHSHUND
-//   BULLDOG
-//   HUSKY
-// }
+enum PetColor {
+  WHITE
+  BLACK
+  BROWN
+  GRAY
+}
 
+// Model
 model Pet {
-  id          String   @id @default(cuid())
+  id          String      @id @default(uuid())
   userId      String
   name        String
-  breed       String   @unique
-  age         String
-  color       String
-  size        String
+  breed       String
+  age         Float       @default(2)
+  color       PetColor    @default(BLACK)
+  size        PetSize     @default(MEDIUM)
   description String
-  images      String?
-  category    String
-  gender      String
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime
+  image       String?
+  category    PetCategory @default(DOG)
+  gender      PetGender   @default(MALE)
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @default(now())
 }
 
 // PetAdoption
