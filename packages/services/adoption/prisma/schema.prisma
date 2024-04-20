@@ -14,68 +14,69 @@ datasource db {
 }
 
 // create pet schema 
-enum petGender {
-  MALE
-  FEMALE
-}
+// enum petGender {
+//   MALE
+//   FEMALE
+// }
 
-enum petCategory {
-  DOG
-  CAT
-  BIRD
-}
+// enum petCategory {
+//   DOG
+//   CAT
+//   BIRD
+// }
 
-enum petSize {
-  SMALL
-  MEDIUM
-  LARGE
-  EX_LARGE
-}
+// enum petSize {
+//   SMALL
+//   MEDIUM
+//   LARGE
+//   EX_LARGE
+// }
 
-enum petColor {
-  WHITH
-  BLACK
-  BROWN
-  GRAY
-}
+// enum petColor {
+//   WHITH
+//   BLACK
+//   BROWN
+//   GRAY
+// }
 
-enum petBreed {
-  LABRADOR
-  POODLE
-  BEAGLE
-  GERMAN_SHEPHERD
-  GOLDEN_RETRIEVER
-  DACHSHUND
-  BULLDOG
-  HUSKY
-}
+// enum petBreed {
+//   LABRADOR
+//   POODLE
+//   BEAGLE
+//   GERMAN_SHEPHERD
+//   GOLDEN_RETRIEVER
+//   DACHSHUND
+//   BULLDOG
+//   HUSKY
+// }
 
 model Pet {
-  id          String      @id @default(cuid())
+  id          String   @id @default(cuid())
   userId      String
   name        String
-  breed       String      @unique
-  age         Float       @default(2)
-  color       petColor    @default(BLACK)
-  size        petSize     @default(MEDIUM)
+  breed       String   @unique
+  age         String
+  color       String
+  size        String
   description String
   images      String?
-  category    petCategory @default(DOG)
-  gender      petGender   @default(FEMALE)
-  createdAt   DateTime    @default(now())
+  category    String
+  gender      String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime
 }
 
 // PetAdoption
 
-model PetAdoption {
-  id          String   @id @default(cuid())
-  petId       String
-  userId      String
-  description String
-  status      String
-  size        petSize  @default(MEDIUM)
-  color       petColor @default(BLACK)
-  breed       petBreed @default(HUSKY)
-  age         String
-  createdAt   DateTime @default(now())
-}
+// model PetAdoption {
+//   id          String   @id @default(cuid())
+//   petId       String
+//   userId      String
+//   description String
+//   status      String
+//   size        petSize  @default(MEDIUM)
+//   color       petColor @default(BLACK)
+//   breed       petBreed @default(HUSKY)
+//   age         String
+//   createdAt   DateTime @default(now())
+// }

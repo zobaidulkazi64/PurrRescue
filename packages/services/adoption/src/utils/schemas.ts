@@ -3,10 +3,10 @@ import { z } from "zod";
 export const CreatePetSchema = z.object({
   userId: z.string(),
   name: z.string(),
-  breed: z.string().optional(),
-  age: z.number().optional(),
+  breed: z.string(),
+  age: z.string(),
   color: z.string(),
-  size: z.string().default("Medium"),
+  size: z.string(),
   description: z.string().min(20).max(500),
   image: z.string().optional(),
   category: z.string().optional(),
