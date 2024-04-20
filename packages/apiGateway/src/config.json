@@ -1,0 +1,74 @@
+{
+  "services": {
+    "user": {
+      "url": "http://localhost:4000",
+      "routes": [
+        {
+          "path": "/api/users/:id",
+          "methods": ["get"],
+          "middlewares": []
+        },
+        {
+          "path": "/api/users",
+          "methods": ["post"],
+          "middlewares": ["auth"]
+        },
+        {
+          "path": "/api/users",
+          "methods": ["get"],
+          "middlewares": []
+        }
+      ]
+    },
+    "auth": {
+      "url": "http://localhost:4001",
+      "routes": [
+        {
+          "path": "/auth/register",
+          "methods": ["post"],
+          "middlewares": [""]
+        },
+        {
+          "path": "/auth/login",
+          "methods": ["post"],
+          "middlewares": ["auth"]
+        }
+      ]
+    },
+    "adoption": {
+      "url": "http://localhost:4002",
+      "routes": [
+        {
+          "path": "/pets",
+          "methods": ["post"],
+          "middlewares": []
+        },
+        {
+          "path": "/pets/:id",
+          "methods": ["get"],
+          "middlewares": []
+        },
+        {
+          "path": "/petsAdopted",
+          "methods": ["post"],
+          "middlewares": ["auth"]
+        },
+        {
+          "path": "/petsAdopted/:id",
+          "methods": ["get"],
+          "middlewares": []
+        }
+      ]
+    },
+    "notification": {
+      "url": "http://localhost:4003",
+      "routes": [
+        {
+          "path": "/users/:id",
+          "methods": ["get"],
+          "middlewares": ["auth"]
+        }
+      ]
+    }
+  }
+}
