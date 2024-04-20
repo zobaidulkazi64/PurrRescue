@@ -41,12 +41,20 @@ enum PetColor {
   GRAY
 }
 
+enum PetBreed {
+  HUSKY
+  BEAGLE
+  DOGOT
+  LABRADO
+  POMERANIAN
+}
+
 // Model
 model Pet {
   id          String      @id @default(uuid())
   userId      String
   name        String
-  breed       String
+  breed       PetBreed    @default(HUSKY)
   age         Float       @default(2)
   color       PetColor    @default(BLACK)
   size        PetSize     @default(MEDIUM)
@@ -60,15 +68,17 @@ model Pet {
 
 // PetAdoption
 
-// model PetAdoption {
-//   id          String   @id @default(cuid())
-//   petId       String
-//   userId      String
-//   description String
-//   status      String
-//   size        petSize  @default(MEDIUM)
-//   color       petColor @default(BLACK)
-//   breed       petBreed @default(HUSKY)
-//   age         String
-//   createdAt   DateTime @default(now())
-// }
+model PetAdoption {
+  id          String      @id @default(cuid())
+  petId       String
+  userId      String
+  description String?
+  status      String?
+  size        PetSize     @default(MEDIUM)
+  color       PetColor    @default(BLACK)
+  breed       PetBreed    @default(HUSKY)
+  age         Float       @default(2)
+  category    PetCategory @default(DOG)
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @default(now())
+}

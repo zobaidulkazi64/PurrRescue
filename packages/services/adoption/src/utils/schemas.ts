@@ -1,10 +1,16 @@
-import { PetColor, PetSize, PetCategory, PetGender } from "@prisma/client";
+import {
+  PetColor,
+  PetSize,
+  PetCategory,
+  PetGender,
+  PetBreed,
+} from "@prisma/client";
 import { z } from "zod";
 
 export const CreatePetSchema = z.object({
   userId: z.string(),
   name: z.string(),
-  breed: z.string(),
+  breed: z.nativeEnum(PetBreed),
   age: z.number().optional(),
   color: z.nativeEnum(PetColor),
   size: z.nativeEnum(PetSize),
@@ -17,10 +23,11 @@ export const CreatePetSchema = z.object({
 export const PetAdoptionSchema = z.object({
   petId: z.string(),
   userId: z.string(),
-  description: z.string(),
+  description: z.string().optional(),
   status: z.string().optional(),
-  size: z.string(),
-  color: z.string(),
-  age: z.string().optional(),
-  breed: z.string(),
+  size: z.nativeEnum(PetSize),
+  color: z.nativeEnum(PetColor),
+  age: z.number(),
+  breed: z.nativeEnum(PetBreed),
+  category: z.nativeEnum(PetCategory),
 });

@@ -24,12 +24,11 @@ const createUser = async (req: Request, res: Response, next: NextFunction) => {
     // create user
     const createdUser = await prisma.user.create({
       data: parsedBody.data,
-      
     });
 
-    res.status(201).json(createdUser);
-    return res.status(201).json({
+    res.status(201).json({
       message: "User created successfully",
+      data: createdUser,
     });
   } catch (error) {
     next(error);
