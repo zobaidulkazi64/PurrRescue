@@ -21,8 +21,8 @@ app.get("/health", (_req, res) => {
 app.use(error.notFound);
 app.use(error.serverError);
 
-const port = process.env.PORT || 4000;
-const serviceName = process.env.SERVICE_NAME || "User-Service";
+const port = process.env.PORT || 8080;
+const serviceName = process.env.SERVICE_NAME || "Api-Gateway-Service";
 
 app.listen(port, () => {
   console.log(`${serviceName} is running on port ${port}`);
