@@ -4,17 +4,17 @@
       "url": "http://localhost:4000",
       "routes": [
         {
-          "path": "/api/users/:id",
+          "path": "/users/:id",
           "methods": ["get"],
           "middlewares": []
         },
         {
-          "path": "/api/users",
+          "path": "/user",
           "methods": ["post"],
           "middlewares": ["auth"]
         },
         {
-          "path": "/api/users",
+          "path": "/users",
           "methods": ["get"],
           "middlewares": []
         }
