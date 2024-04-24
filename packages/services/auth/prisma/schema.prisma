@@ -25,7 +25,7 @@ enum AccountStatus {
   SUSPENDED
 }
 
-model User {
+model AuthUser {
   id           String         @id @default(cuid())
   name         String
   email        String         @unique
@@ -46,7 +46,7 @@ enum LoginAttempt {
 model LoginHistory {
   id        String       @id @default(cuid())
   userId    String
-  user      User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user      AuthUser     @relation(fields: [userId], references: [id], onDelete: Cascade)
   ip        String?
   userAgent String?
   attempt   LoginAttempt @default(SUCCESS)

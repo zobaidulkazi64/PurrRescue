@@ -44,7 +44,7 @@ const UserLogin = async (req: Request, res: Response, next: NextFunction) => {
     const userAgent = (req.headers["user-agent"] as string) || "";
 
     // check if user exists
-    const user = await prisma.user.findUnique({
+    const user = await prisma.authUser.findUnique({
       where: {
         email: parsedBody.data.email,
       },

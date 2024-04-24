@@ -19,7 +19,7 @@ const UserRegister = async (
     }
 
     // check if user already exists\\
-    const existingUser = await prisma.user.findUnique({
+    const existingUser = await prisma.authUser.findUnique({
       where: {
         email: parsedBody.data.email,
       },
@@ -34,7 +34,7 @@ const UserRegister = async (
 
     // create auth user
 
-    const user = await prisma.user.create({
+    const user = await prisma.authUser.create({
       data: {
         ...parsedBody.data,
         password: hashedPassword,

@@ -1,8 +1,8 @@
 import express from "express";
 const router = express.Router();
-import { UserRegistration, UserLogin, authToken } from "@/controllers";
+import { UserRegister, UserLogin, authToken } from "@/controllers";
 
-router.post("/registration", UserRegistration);
+router.post("/registration", UserRegister);
 router.post("/login", authToken, UserLogin);
 router.post("/auth-token", authToken);
 
