@@ -7,7 +7,16 @@ const auth = async (req: Request, res: Response, next: NextFunction) => {
       return res.status(401).json({ message: "Unauthorized" });
     }
 
-    next();
+    try {
+      const { data } = await axios.post(
+        `${process.env.AUTH_URL}/auth/validate`,
+      )
+
+      req.body = { ...req.body, ...data };
+
+    } catch (error) {
+      next(error);
+    }
   } catch (error) {
     next(error);
   }

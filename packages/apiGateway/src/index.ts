@@ -35,6 +35,7 @@ app.get("/health", limiter, (_req, res) => {
 });
 
 // routes
+configureRoutes(app);
 
 //  handler
 app.use(error.notFound);

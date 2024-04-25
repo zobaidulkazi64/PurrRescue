@@ -1,4 +1,3 @@
-import { hostname } from "os";
 import { Express, Request, Response } from "express";
 import config from "@/config.json";
 import axios from "axios";
@@ -51,19 +50,21 @@ export const createHandler = (
   };
 };
 
-export const getMiddlewares = (names: string[]) => {
-  return names.map((name) => middlewares[name]);
-};
+// export const getMiddlewares = (names: string[]) => {
+//   return names.map((name) => middlewares[name]);
+// };
 
 export const configureRoutes = (app: Express) => {
   Object.entries(config.services).forEach(([_name, services]) => {
     const hostname = services.url;
     services.routes.forEach((route) => {
       route.methods.forEach((method) => {
-        const endpoint = `/api${route.path}`;
-        const middleware = getMiddlewares(route.middlewares);
+        console.log(route.path, method);
+        const endpoint = `api/${route.path}`;
+        console.log(endpoint);
+      
         const handler = createHandler(hostname, route.path, method);
-        app[method](endpoint, ...middleware, handler);
+        app[method](endpoint, handler);
       });
     });
   });
