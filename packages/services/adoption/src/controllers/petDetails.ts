@@ -14,6 +14,15 @@ const petDetails = async (req: Request, res: Response, next: NextFunction) => {
             },
         
         })
+
+        if (!pet) {
+            return res.status(404).json({ message: "Pet not found" });
+        }
+
+        res.status(200).json({
+            message: "Pet fetched successfully",
+            data: pet,
+        })
     } catch (error) {
         next(error);
     }
