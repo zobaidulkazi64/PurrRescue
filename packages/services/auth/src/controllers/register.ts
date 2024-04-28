@@ -2,6 +2,7 @@ import { Request, Response, NextFunction } from "express";
 import prisma from "@/utils/prisma";
 import { registerSchema } from "../utils/schemas";
 import bcrypt from "bcryptjs";
+import { generateVerificationCode } from "../utils/generateVerificationCode";
 
 const UserRegister = async (
   req: Request,
@@ -51,6 +52,18 @@ const UserRegister = async (
     });
 
     console.log(user);
+
+
+
+    // generate verification code
+    const verificationCode = generateVerificationCode();
+    await prisma.verificationCode.create({
+      data: {
+        userId: user.id,
+        code: verificationCode,
+        createdAt: new Date(Date.now() + 1000 * 60 *60 * 24), // 1 day
+      }
+    })
 
     return res.status(201).json({
       success: true,
