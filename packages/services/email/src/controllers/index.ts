@@ -1,2 +1,2 @@
-import { amqp } from 'amqplib';
-const amqpConnection = amqp.connect('amqp://localhost');
+export { default as getEmails } from './getEmails';
+export { default as sendEmail } from './sendEmail';
