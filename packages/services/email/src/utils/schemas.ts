@@ -1,9 +1,9 @@
 import { z } from 'zod';
 
-export const EmailCreateSchema = z.object({
-	recipient: z.string().email(),
+export const emailCreateSchema = z.object({
+	sender: z.string().optional(),
+	recipient: z.string(),
 	subject: z.string(),
 	body: z.string(),
-	source: z.string(),
-	sender: z.string().email().optional(),
+	source: z.string().optional()
 });

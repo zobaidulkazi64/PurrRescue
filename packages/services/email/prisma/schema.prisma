@@ -12,3 +12,14 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model Email {
+  id        String   @id @default(cuid())
+  sender    String   @default("")
+  recipient String
+  subject   String
+  body      String
+  source    String   @default("")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+}

@@ -17,6 +17,13 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
 
+const port = process.env.PORT || 4004;
+
+
+app.listen(port, () => {
+    console.log(`Notification service listening on port ${port}`);
+})
+
 app.get("/", (_req, res) => {
     res.status(200).json({ status: "UP" });
 })
