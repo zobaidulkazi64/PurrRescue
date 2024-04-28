@@ -48,4 +48,4 @@ io.on('connection', (socket) => {
     });
 });
 
-receiveNotifications();
+export default receiveNotifications;

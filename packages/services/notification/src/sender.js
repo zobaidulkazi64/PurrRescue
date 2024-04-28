@@ -30,4 +30,4 @@ const sendNotification = async (notification) => {
 };
 
 
-sendNotification();
+export default sendNotification;
