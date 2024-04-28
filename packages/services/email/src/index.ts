@@ -21,11 +21,10 @@ app.get("/health", (_req, res) => {
 
 app.use("/", router);
 
-//  handler
 app.use(error.notFound);
 app.use(error.serverError);
 
-const port = process.env.PORT || 4000;
+const port = process.env.PORT || 4003;
 const serviceName = process.env.SERVICE_NAME || "Email-Service";
 
 app.listen(port, () => {

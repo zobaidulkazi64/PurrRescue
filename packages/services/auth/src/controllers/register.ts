@@ -68,6 +68,8 @@ const UserRegister = async (
      }
     })
 
+    console.log(code);
+
     // send verification code
 
     await axios.post('http:localhost:4003/emails/send', {
