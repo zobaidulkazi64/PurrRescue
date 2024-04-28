@@ -2,7 +2,10 @@ import { Request, Response, NextFunction } from "express";
 import prisma from "@/utils/prisma";
 import { registerSchema } from "../utils/schemas";
 import bcrypt from "bcryptjs";
-import { generateVerificationCode } from "../utils/generateVerificationCode";
+import generateVerificationCode from "@/utils/generateVerificationCode";
+import axios from "axios";
+
+
 
 const UserRegister = async (
   req: Request,
@@ -56,13 +59,23 @@ const UserRegister = async (
 
 
     // generate verification code
-    const verificationCode = generateVerificationCode();
+    const code = generateVerificationCode();
     await prisma.verificationCode.create({
       data: {
         userId: user.id,
-        code: verificationCode,
-        createdAt: new Date(Date.now() + 1000 * 60 *60 * 24), // 1 day
-      }
+        code,
+        expireAt: new Date(Date.now() + 5 * 60 * 1000), // 5 minutes
+     }
+    })
+
+    // send verification code
+
+    await axios.post('http:localhost:4003/emails/send', {
+      recipient: user.email,
+      subject: 'Verify your email',
+      body: `Your verification code is: ${code}`,
+      source: "user registration",
+      
     })
 
     return res.status(201).json({

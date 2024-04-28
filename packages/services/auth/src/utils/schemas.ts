@@ -23,3 +23,9 @@ export const LoginHistorySchema = z.object({
 export const AccessTokenSchema = z.object({
   accessToken: z.string(),
 });
+
+
+export const emailVerificationSchema = z.object({
+  code: z.string(),
+  email: z.string().email(),
+})

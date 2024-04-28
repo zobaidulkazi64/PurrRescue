@@ -36,7 +36,7 @@ model AuthUser {
   createdAt        DateTime           @default(now())
   updatedAt        DateTime           @updatedAt
   LoginHistory     LoginHistory[]
-  VerificationCode VerificationCode[]
+  VerificationCode verificationCode[]
 }
 
 enum LoginAttempt {
@@ -51,6 +51,7 @@ model LoginHistory {
   ip        String?
   userAgent String?
   attempt   LoginAttempt @default(SUCCESS)
+  loggedAt  DateTime     @default(now())
 }
 
 enum VerificationStatus {
@@ -65,16 +66,14 @@ enum VerificationCodeType {
   EMAIL_CHANGE
 }
 
-model VerificationCode {
-  id        String               @id @default(cuid())
-  userId    String
-  user      AuthUser             @relation(fields: [userId], references: [id], onDelete: Cascade)
-  code      String
-  type      VerificationCodeType
-  status    VerificationStatus
-  expireAt  DateTime
-  createdAt DateTime             @default(now())
-  updatedAt DateTime             @updatedAt
-  deletedAt DateTime?
-  veriedAt  DateTime?
+model verificationCode {
+  id         String               @id @default(cuid())
+  userId     String
+  user       AuthUser             @relation(fields: [userId], references: [id], onDelete: Cascade)
+  code       String
+  type       VerificationCodeType @default(ACCOUND_ACITVATION)
+  status     VerificationStatus   @default(PENDING)
+  expireAt   DateTime
+  issuedAt   DateTime             @default(now())
+  verifiedAt DateTime?
 }
