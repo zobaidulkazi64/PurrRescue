@@ -33,6 +33,3 @@ jobs:
 
       - name: success
         run: echo "Success" && exit 0
-
-      - name: failure
-        run: echo "Failure" && exit 1
