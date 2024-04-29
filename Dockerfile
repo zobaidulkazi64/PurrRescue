@@ -1,8 +1,8 @@
 FROM node:20-alpine
 
-WORKDIR /packages/services
+WORKDIR /app
 
-COPY packages.json yarn.lock ./
+COPY package.json yarn.lock ./
 
 RUN yarn install --frozen-lockfile
 
