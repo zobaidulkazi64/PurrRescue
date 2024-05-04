@@ -5,6 +5,9 @@ on:
     branches:
       - main
 
+env:
+  IMAGE_NAME: zobaidulkazihub/purrrescue
+
 jobs:
   push_to_registry:
     name: Push Docker Hub

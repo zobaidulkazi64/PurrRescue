@@ -74,10 +74,31 @@
       "url": "http://localhost:4004",
       "routes": [
         {
-          "path": "/users/:id",
+          "path": "/notification/send",
           "methods": ["get"],
           "middlewares": ["auth"]
+        },
+        {
+          "path": "/notification/:id",
+          "methods": ["get"],
+          "middlewares": ["auth"]
+        },
+        {
+          "path": "/notification",
+          "methods": ["post"],
+          "middlewares": ["auth"]
         }
+      ]
+    },
+    "reposing": {
+      "url": "http://localhost:4005",
+      "routes": [
+       {
+         "path": "/reposing",
+         "methods": ["get"],
+         "middlewares": ["auth"]
+       }
+
       ]
     }
   }
