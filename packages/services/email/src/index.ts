@@ -23,6 +23,8 @@ app.use("/", router);
 
 app.use(error.notFound);
 app.use(error.serverError);
+app.use(error.invalidInput);
+app.use(error.unauthorized);
 
 const port = process.env.PORT || 4003;
 const serviceName = process.env.SERVICE_NAME || "Email-Service";

@@ -28,3 +28,11 @@ export const authenticationError = (msg = "Authentication Failed") => {
 export const authorizationError = (msg = "Permission Denied") => {
   return new HTTPError(msg, 403);
 };
+
+export function invalidInput(invalidInput: any) {
+  throw new Error("Function not implemented.");
+}
+export function unauthorized(unauthorized: any) {
+  throw new Error("Function not implemented.");
+}
+
