@@ -40,8 +40,8 @@ configureRoutes(app);
 //  handler
 app.use(error.notFound);
 app.use(error.serverError);
-app.use(error.invalidInput);
-app.use(error.unauthorized);
+// app.use(error.invalidInput);
+// app.use(error.unauthorized);
 
 const port = process.env.PORT || 8080;
 const serviceName = process.env.SERVICE_NAME || "Api-Gateway-Service";

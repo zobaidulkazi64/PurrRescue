@@ -4,17 +4,17 @@
       "url": "http://localhost:4000",
       "routes": [
         {
-          "path": "/users/:id",
-          "methods": ["get"],
+          "path": "/auth/create",
+          "methods": ["post"],
           "middlewares": []
         },
         {
-          "path": "/user",
-          "methods": ["post"],
-          "middlewares": ["auth"]
+          "path": "/auth/users",
+          "methods": ["get"],
+          "middlewares": [""]
         },
         {
-          "path": "/users",
+          "path": "/user:id",
           "methods": ["get"],
           "middlewares": []
         }
@@ -60,7 +60,7 @@
         }
       ]
     },
-    "email" : {
+    "email": {
       "url": "http://localhost:4003",
       "routes": [
         {
@@ -93,12 +93,11 @@
     "reposing": {
       "url": "http://localhost:4005",
       "routes": [
-       {
-         "path": "/reposing",
-         "methods": ["get"],
-         "middlewares": ["auth"]
-       }
-
+        {
+          "path": "/reposing",
+          "methods": ["get"],
+          "middlewares": ["auth"]
+        }
       ]
     }
   }

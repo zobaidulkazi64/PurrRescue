@@ -19,7 +19,7 @@ app.get("/health", (_req, res) => {
 
 // routes
 
-app.use("/api", router);
+app.use("/auth", router);
 
 //  handler
 app.use(error.notFound);
