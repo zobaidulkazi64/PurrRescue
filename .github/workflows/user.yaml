@@ -3,7 +3,9 @@ name: User Workflow - Build
 on:
   push:
     branches:
-      - main
+      - master
+    paths:
+      - "packages/services/user/**"
 
 jobs:
   user-build:

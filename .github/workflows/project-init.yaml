@@ -3,7 +3,9 @@ name: Project Init
 on:
   push:
     branches:
-      - main
+      - master
+    paths:
+      - "packages/**"
 
 jobs:
   project-init:

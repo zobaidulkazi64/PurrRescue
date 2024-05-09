@@ -3,7 +3,9 @@ name: Auth Workflow - Build
 on:
   push:
     branches:
-      - main
+      - master
+    paths:
+      - "packages/services/auth/**"
 
 jobs:
   auth-build:
