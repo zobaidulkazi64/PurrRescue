@@ -24,6 +24,8 @@ app.use("/auth", router);
 //  handler
 app.use(error.notFound);
 app.use(error.serverError);
+app.use(error.invalidInput);
+app.use(error.unauthorized);
 
 const port = process.env.PORT || 4001;
 const serviceName = process.env.SERVICE_NAME || "Auth-Service";
