@@ -17,7 +17,7 @@ const receiveFromQueue = async (
         callback(message.content.toString());
       }
 
-      channel.ack(message);
+      channel.ack(message as any);
 
       connection.close();
     });

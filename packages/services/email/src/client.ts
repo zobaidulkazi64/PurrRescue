@@ -1,11 +1,8 @@
-import { Redis } from 'ioredis'
-
+import { Redis } from "ioredis";
 
 const client = new Redis({
-    host: 'localhost',
-    port: 6379
+  host: "localhost",
+  port: 6379,
+});
 
-})
-
-
-export default client
+export default client;
