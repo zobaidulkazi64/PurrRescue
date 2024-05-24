@@ -1,39 +1,33 @@
 const amqp = require('amqplib');
 
-const queueName = 'notifications';
-const exchangeName = 'notifications';
+// Function to send notifications
+const sendNotification = async (notification) => {
+    try {
+        const connection = await amqp.connect('amqp://localhost');
+        const channel = await connection.createChannel();
 
-async function sendNotification(notification) {
-  try {
-    const connection = await amqp.connect('amqp://localhost');
-    const channel = await connection.createChannel();
+        const exchange = 'notifications';
+        const msg = process.argv.slice(2).join(' ') || 'Notification message Sender';
 
-    await channel.assertExchange(exchangeName, 'fanout', { durable: false });
 
-    const msg = Buffer.from(JSON.stringify(notification)); // Convert notification to JSON buffer
+        channel.assertExchange(exchange, 'fanout', {
+            durable: false
+        })
 
-    channel.publish(exchangeName, '', msg);
+        channel.publish(exchange, '', Buffer.from(msg));
 
-    console.log(" [x] Sent %s", notification);
+        console.log(" [x] Sent %s", msg);
 
-    await connection.close(); // Close connection after sending
 
-  } catch (error) {
-    console.error("Error sending notification:", error);
-  }
-}
+        setTimeout(() => {
+            connection.close();
+            process.exit(0)
+        }, 500)
 
-// You can export the sendNotification function if needed
-// module.exports = sendNotification;
+    } catch (error) {
+        console.error("Error sending notification:", error);
+    }
+};
 
-(async () => {
-  try {
-    const notification = { // Replace with your actual notification data
-      title: "Your Notification Title",
-      content: "This is the message content",
-    };
-    await sendNotification(notification);
-  } catch (error) {
-    console.error(error);
-  }
-})();
+
+export default sendNotification;

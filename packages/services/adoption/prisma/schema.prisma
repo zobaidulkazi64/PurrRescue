@@ -55,7 +55,7 @@ model Pet {
   userId      String
   name        String
   breed       PetBreed    @default(HUSKY)
-  age         Float       @default(2)
+  age         String      @default("2")
   color       PetColor    @default(BLACK)
   size        PetSize     @default(MEDIUM)
   description String
@@ -77,7 +77,8 @@ model PetAdoption {
   size        PetSize     @default(MEDIUM)
   color       PetColor    @default(BLACK)
   breed       PetBreed    @default(HUSKY)
-  age         Float       @default(2)
+  age         String      @default("2")
+  gender      PetGender   @default(MALE)
   category    PetCategory @default(DOG)
   createdAt   DateTime    @default(now())
   updatedAt   DateTime    @default(now())

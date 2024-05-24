@@ -42,5 +42,4 @@ The User Pet Adoption and Rescue Platform is developed using a microservices arc
 
 ## Additional Resources
 
-- [System Design PurrRescue](https://zobaidulkazi.notion.site/System-Design-PurrRescue-d7d15956853140cab6398c7a975364a8)
-- [User Pet Adoption and Rescue Platform Docker Image](https://hub.docker.com/r/zobaidulkazihub/purrrescue)
+- [User Pet Adoption and Rescue Platform](https://github.com/zobkazi/PurrRescue)

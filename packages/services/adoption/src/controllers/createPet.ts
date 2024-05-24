@@ -11,11 +11,15 @@ const createPet = async (req: Request, res: Response, next: NextFunction) => {
     }
 
     // check if pet already exists
+    const { userId, name } = parsedBody.data;
+
     const existingPet = await prisma.pet.findFirst({
       where: {
-        name: parsedBody.data.name,
+        userId,
+        name,
       },
     });
+
     if (existingPet) {
       return res.status(400).json({ message: "Pet already exists" });
     }

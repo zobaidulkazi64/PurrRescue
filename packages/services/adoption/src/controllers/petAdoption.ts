@@ -28,7 +28,7 @@ const petAdoption = async (req: Request, res: Response, next: NextFunction) => {
       where: {
         petId: parsedBody.data.petId,
       },
-    })
+    });
     if (petAdoptionExists) {
       return res.status(400).json({ message: "Pet already adopted" });
     }
@@ -49,14 +49,14 @@ const petAdoption = async (req: Request, res: Response, next: NextFunction) => {
       return res.status(404).json({ message: "User not found" });
     }
 
-    // Create the adoption
-    const adoption = await prisma.petAdoption.create({
-      data: parsedBody.data,
-    });
+    // // Create the adoption
+    // const adoption = await prisma.petAdoption.create({
+    //   data: parsedBody.data,
+    // });
 
     res.status(201).json({
       message: "Adoption created successfully",
-      data: adoption,
+      // data: adoption,
     });
   } catch (error) {
     next(error);

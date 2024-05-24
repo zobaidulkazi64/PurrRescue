@@ -11,7 +11,7 @@ export const CreatePetSchema = z.object({
   userId: z.string(),
   name: z.string(),
   breed: z.nativeEnum(PetBreed),
-  age: z.number().optional(),
+  age: z.string().optional(),
   color: z.nativeEnum(PetColor),
   size: z.nativeEnum(PetSize),
   description: z.string().min(20).max(500),
